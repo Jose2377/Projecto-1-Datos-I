@@ -25,14 +25,13 @@ public class Main extends Application {
     	ObservableList<Estudiante> data = FXCollections.observableArrayList();
         BufferedReader br;
         try {
-        	FileReader Name = new FileReader("C:\\Users\\'Jose Maria Vindas'\\Documents\\GitHub\\Projecto-1-Datos-I\\Extraclase1\\bin\\application\\Prueba.csv");
-            br = new BufferedReader(Name);
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] Posi = line.split(",", -1);
- 
-                Estudiante est = new Estudiante(Posi[0], Posi[1], Posi[2]);
+        	br = new BufferedReader(new FileReader("\\Users\\Jose Maria Vindas\\Desktop\\Prueba.csv"));
+            String line = br.readLine();
+            while (line != null) {
+                String[] Posi = line.split(";", -1);
+                Estudiante est = new Estudiante(Posi[0], Posi[1], Posi[2]); 
                 data.add(est);
+                line = br.readLine();
             }
             tabla.setItems(data);
  
