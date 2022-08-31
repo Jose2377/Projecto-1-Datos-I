@@ -4,10 +4,10 @@ public class Estudiante {
 	private String carne;
 	private String nombre;
 	private String correo;
+	private String telefono;
+	private String nickname;
+	private String t_estudiante;
 	/*
-	private int Telefono;
-	private String Nickname;
-	private String T_estudiante;
 	private float N_promedio_exam;
 	private float N_promedio_quic;
 	private float N_promedio_tar;
@@ -31,5 +31,16 @@ public class Estudiante {
 
     public String getCorreo() {
         return correo;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getTipo() {
+        return t_estudiante;
     }
 }
