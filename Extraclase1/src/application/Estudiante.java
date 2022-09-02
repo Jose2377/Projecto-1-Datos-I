@@ -1,6 +1,24 @@
 package application;
 
+/**
+ * Clase padre de los tipos de estudiantes, donde guarda informacion y permite revisarla con los get
+ * @author Jose Maria Vindas
+ *
+ */
+/* Clase Estudiante, evidencia de clase, un molde con atributos y metodos
+ * de donde se pueden hacer una gran cantidad de diferentes estudiantes
+ * y al mismo tiempo abstraccion ya que estamos creando un estudiante
+ * pero que solo para guardar informacion y darla, no puede por ejemplo
+ * escrbir palabras, como un estudiante puede hacer, pero no lo incluimos ya
+ * que no es necesario ni tampoco la gran cantidad de acciones o informacion mas
+ */
 public class Estudiante {
+	/* Atributos de la clase Estudiante, evidencia de atributos
+	 * cualidades de los estudiantes como el nombre o carne
+	 * y al mismo tiempo encalsulacion, ya que estos atributos
+	 * son privados y solo pueden ser vistas por la propia clase
+	 * a no ser que diga esos atributos por medio de los get
+	 */
 	private String carne;
 	private String nombre;
 	private String correo;
@@ -13,10 +31,25 @@ public class Estudiante {
 	private float pro1;
 	private float pro2;
 	private float pro3;
-	private float prom1;
-	private float prom2;
+	protected float prom1;
+	protected float prom2;
 	private float promf;
 	
+	/**
+	 * Clase constructura de la funcion 
+	 * @param carne - Valor del carne del estudiante
+	 * @param nombre - Valor del nombre del estudiante
+	 * @param correo - Valor del correo del estudiante
+	 * @param telefono - Valor del telefono del estudiante
+	 * @param nickname - Valor del nickname del estudiante
+	 * @param tipo - Valor del tipo del estudiante
+	 * @param exam - Valor de la nota de los examenes del estudiante
+	 * @param quic - Valor de la nota de los quices del estudiante
+	 * @param tarea - Valor de la nota de las tareas del estudiante
+	 * @param pro1 - Valor de la nota del primer proyecto del estudiante
+	 * @param pro2 - Valor de la nota del segundo proyecto del estudiante
+	 * @param pro3 - Valor de la nota del tercer proyecto del estudiante
+	 */
 	public Estudiante(String carne,String nombre, String correo, String telefono, String nickname, String tipo, String exam, String quic, String tarea, String pro1, String pro2, String pro3) {
 		this.carne = carne;
 		this.nombre = nombre;
@@ -69,30 +102,67 @@ public class Estudiante {
 		this.prom2 = (this.exam+this.quic+this.tarea)/3;
 		this.promf = (this.prom1+this.prom2)/2;
 	}
+	// Funciones get de la funcion, evidencia de metodos
+	/**
+	 * Un metodo get que retorna el carne
+	 * @return
+	 */
     public String getCarne() {
         return carne;
     }
+	/**
+	 * Un metodo get que retorna el nombre
+	 * @return
+	 */
     public String getNombre() {
         return nombre;
     }
+	/**
+	 * Un metodo get que retorna el correo
+	 * @return
+	 */
     public String getCorreo() {
         return correo;
     }
+	/**
+	 * Un metodo get que retorna el telefono
+	 * @return
+	 */
     public int getTelefono() {
         return telefono;
     }
+	/**
+	 * Un metodo get que retorna el nickname
+	 * @return
+	 */
     public String getNickname() {
         return nickname;
     }
+	/**
+	 * Un metodo get que retorna el tipo de estudiante
+	 * @return
+	 */
     public String getTipo() {
         return tipo;
     }
+	/**
+	 * Un metodo get que retorna el promedio de examenes
+	 * @return
+	 */
     public float getExam() {
         return exam;
     }
+	/**
+	 * Un metodo get que retorna el promedio de quices
+	 * @return
+	 */
     public float getQuic() {
         return quic;
     }
+	/**
+	 * Un metodo get que retorna el promedio de tareas
+	 * @return
+	 */
     public float getTarea() {
         return tarea;
     }
@@ -104,12 +174,6 @@ public class Estudiante {
     }
     public float getPro3() {
         return pro3;
-    }
-    public float getProm1() {
-        return prom1;
-    }
-    public float getProm2() {
-        return prom2;
     }
     public float getPromf() {
         return promf;

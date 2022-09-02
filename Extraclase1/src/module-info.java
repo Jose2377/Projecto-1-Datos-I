@@ -4,5 +4,5 @@ module Extraclase1 {
 	requires javafx.graphics;
 	requires java.desktop;
 	
-	opens application to javafx.graphics, javafx.fxml, javafx.base;
+	opens application to javafx.graphics, javafx.base, javafx.controls, java.desktop;
 }
