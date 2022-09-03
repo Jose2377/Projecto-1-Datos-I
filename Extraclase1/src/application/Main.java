@@ -155,7 +155,7 @@ public class Main extends Application {
             
             // Se crea la aplicacion
             primaryStage.setResizable(false);
-            primaryStage.setTitle("Prueba");
+            primaryStage.setTitle("Proyecto");
             primaryStage.setScene(scene);
             primaryStage.show();
             
