@@ -51,6 +51,12 @@ public class Estudiante {
 	 * @param pro3 - Valor de la nota del tercer proyecto del estudiante
 	 */
 	public Estudiante(String carne,String nombre, String correo, String telefono, String nickname, String tipo, String exam, String quic, String tarea, String pro1, String pro2, String pro3) {
+		/* Aqui se demuestra una evidencia de la sobrecarga
+		 * en la propia clase tenemos varios pares de variables
+		 * que tienen el mismo nombre, como carne y carne, pero
+		 * aunque tenga el mismo nombre el lenguaje es capaz de 
+		 * detectar quien es quien, una muestra de sobrecarga
+		 */
 		this.carne = carne;
 		this.nombre = nombre;
 		this.correo = correo;
@@ -102,7 +108,11 @@ public class Estudiante {
 		this.prom2 = (this.exam+this.quic+this.tarea)/3;
 		this.promf = (this.prom1+this.prom2)/2;
 	}
-	// Funciones get de la funcion, evidencia de metodos
+	/*Funciones get de la funcion, evidencia de metodos
+	 *Acciones que pueden hacer las instancias y en
+	 *este caso es del contar informacion privada (atributos) 
+	 */
+	
 	/**
 	 * Un metodo get que retorna el carne
 	 * @return
@@ -166,16 +176,47 @@ public class Estudiante {
     public float getTarea() {
         return tarea;
     }
+	/**
+	 * Un metodo get que retorna el promedio del primer proyecto
+	 * @return
+	 */
     public float getPro1() {
         return pro1;
     }
+	/**
+	 * Un metodo get que retorna el promedio del segundo proyecto
+	 * @return
+	 */
     public float getPro2() {
         return pro2;
     }
+	/**
+	 * Un metodo get que retorna el promedio del tercer proyecto
+	 * @return
+	 */
     public float getPro3() {
         return pro3;
     }
+	/**
+	 * Un metodo get que retorna el promedio final
+	 * @return
+	 */
     public float getPromf() {
         return promf;
     }
+	/**
+	 * Un metodo get que retorna el promedio de proyectos
+	 * @return
+	 */
+    public Object getProm1() {
+        return prom1;
+    }
+	/**
+	 * Un metodo get que retorna el promedio de trabajos
+	 * @return
+	 */
+    public Object getProm2() {
+        return prom2;
+    }
+    
 }

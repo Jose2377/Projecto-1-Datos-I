@@ -5,7 +5,10 @@ package application;
  * @author Jose Maria Vindas
  *
  */
-// Clase EstudianteA, hija de la clase Estudiante, evidencia de herencia
+/* Clase EstudianteA, hija de la clase Estudiante, evidencia de herencia
+ * una clase que sus metodos y atributos vienen de una clase padre
+ * ahorrando el tiempo y recursos.
+ */
 public class EstudianteA extends Estudiante{
 	
 	/**
@@ -32,16 +35,11 @@ public class EstudianteA extends Estudiante{
 	 * Un metodo get que retorna el promedio de proyectos, siendo null por ser tipo A
 	 * @return
 	 */
-	// Metodos get
+	/* Metodos get, que evidencia sobreescritura, ya que el
+	 * metodo original de la clase padre es diferente a la de
+	 * la clase actual, o sea, la hija ya que la modificamos
+	 */
     public Object getProm1() {
         return null;
     }
-	/**
-	 * Un metodo get que retorna el promedio de evaluaciones
-	 * @return
-	 */
-    public float getProm2() {
-        return prom2;
-    }
-	
 }

@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
  *
  */
 public class Main extends Application {
+	//Se crea una tabla
     private TableView<Estudiante> tabla = new TableView<Estudiante>();
     
     /**
@@ -30,7 +31,10 @@ public class Main extends Application {
      *      */
     public void Leer()
     {
+    	//Crea una lista observable de estudiantes
     	ObservableList<Estudiante> data = FXCollections.observableArrayList();
+    	
+    	//Selecciona y lee el archivo
         BufferedReader br;
         FileChooser file = new FileChooser();
         file.setTitle("Seleccione el archivo");
@@ -41,6 +45,9 @@ public class Main extends Application {
             String line = br.readLine();
             String[] Posi = line.split(";", -1);
 
+            /* Con la informacion de la primera linea que es en teoria los nombres
+             * de las columnas, creo las columnas y las agrego a la tabla
+             */
     	    TableColumn<Estudiante, String> carne = new TableColumn<>(Posi[0]);
             carne.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("carne"));
             TableColumn<Estudiante, String> nombre = new TableColumn<>(Posi[1]);
@@ -53,7 +60,6 @@ public class Main extends Application {
             nick.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("nickname"));
             TableColumn<Estudiante, String> tipo = new TableColumn<>(Posi[5]);
             tipo.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("tipo"));
-            tipo.setPrefWidth(50);
             TableColumn<Estudiante, String> exam = new TableColumn<>(Posi[6]);
             exam.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("exam"));
             TableColumn<Estudiante, String> quiz = new TableColumn<>(Posi[7]);
@@ -62,45 +68,51 @@ public class Main extends Application {
             tarea.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("tarea"));
             TableColumn<Estudiante, String> pro1 = new TableColumn<>(Posi[9]);
             pro1.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("pro1"));
-            pro1.setPrefWidth(100);
             TableColumn<Estudiante, String> pro2 = new TableColumn<>(Posi[10]);
             pro2.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("pro2"));
-            pro2.setPrefWidth(100);
             TableColumn<Estudiante, String> pro3 = new TableColumn<>(Posi[11]);
             pro3.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("pro3"));
-            pro3.setPrefWidth(100);
             TableColumn<Estudiante, String> prom1 = new TableColumn<>("Prom. Proyectos");
             prom1.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("prom1"));
-            prom1.setPrefWidth(100);
             TableColumn<Estudiante, String> prom2 = new TableColumn<>("Prom. Trabajos");
             prom2.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("prom2"));
-            prom2.setPrefWidth(100);
             TableColumn<Estudiante, String> promf = new TableColumn<>("Prom. Final");
             promf.setCellValueFactory(new PropertyValueFactory<Estudiante, String>("promf"));
-            promf.setPrefWidth(80);
+            /* Las setCellValueFactory es una aplicacion del polimorfismo ya que esta llamara
+             * para pedir la informacion especifica a las instancias de estudiantes, independientemente
+             * si son del mismo tipo de clase o no, sea A y A o A y B, el get devolvera el valor,
+             * son diferentes pero como pueden responder al llamado esta bien
+             */
             
             tabla.getColumns().addAll(carne, nombre, email, tele, nick, tipo, exam, quiz, tarea, pro1, pro2, pro3, prom1, prom2, promf);
-            
             line = br.readLine();
             
+            //Con el while recorro todas las filas del archivo hasta que no haya nada mas
             while (line != null) {
-                Posi = line.split(";", -1);
-                if (Posi.length > 11)
+                Posi = line.split(";", -1); //Guardo la informacion de las casillas
+                if (Posi.length > 11) //If por si las moscas
                 {
-                	Estudiante est;
+                	//Defino est
+                	Estudiante est; 
+                	/* Creo una instancia de tipo estudiante tipo a o b dependiendo de ese valor, evidencia de instancia
+                	 * una entidad salida del molde de la clase
+                	 */
                 	if (Posi[5].equals("A"))
                 	{
+                		//Instancia tipo A
                 		est = new EstudianteA(Posi[0], Posi[1], Posi[2], Posi[3], Posi[4], Posi[5], Posi[6], Posi[7], Posi[8], Posi[9], Posi[10], Posi[11]); 
+                		data.add(est); //Agrego a la lista
                 	}
-                	else
+                	else if (Posi[5].equals("B"))
                 	{
+                		//Instancia tipo B
                 		est = new EstudianteB(Posi[0], Posi[1], Posi[2], Posi[3], Posi[4], Posi[5], Posi[6], Posi[7], Posi[8], Posi[9], Posi[10], Posi[11]); 
+                		data.add(est); //Agrego a la lista
                 	}
-                	data.add(est);
                 }
-                line = br.readLine();
+                line = br.readLine(); // Leo la siguente linea
             }
-            tabla.setItems(data);
+            tabla.setItems(data); // Y finalmente lo agrego a la tabla
  
         } catch (Exception e) {
         	e.printStackTrace();
@@ -115,7 +127,7 @@ public class Main extends Application {
     	try {
     		//Crea una escena
     		Pane root = new Pane();
-            Scene scene = new Scene(root, 1270, 500);
+            Scene scene = new Scene(root, 1250, 500);
             
             //Creando el boton con el evento que lleva a la funcion leer
             Button btn = new Button("Abrir archivo");
@@ -134,9 +146,13 @@ public class Main extends Application {
             		}
             	}
             });
+            //Configuracion de la tabla
+            tabla.setMaxWidth(1200);
+            tabla.setMaxHeight(400);
             // Se agregan a la escena
             root.getChildren().add(btn);
             root.getChildren().add(tabla);
+            
             // Se crea la aplicacion
             primaryStage.setResizable(false);
             primaryStage.setTitle("Prueba");
@@ -147,6 +163,10 @@ public class Main extends Application {
     		e.printStackTrace();
     	}
 	}
+    /**
+     * main del Main
+     * @param args
+     */
 	public static void main(String[] args) {
 		launch(args);
 	}
